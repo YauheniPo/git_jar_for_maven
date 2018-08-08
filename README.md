@@ -1,0 +1,1 @@
+# git_jar_for_maven
