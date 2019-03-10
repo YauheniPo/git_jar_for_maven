@@ -15,14 +15,14 @@
     </properties>
 
     <dependencies>
-        <dependency>
-        <groupId>com.sun</groupId>
-        <artifactId>tools</artifactId>
-        <version>RELEASE</version>
-        <scope>system</scope>
-            <!--<systemPath>${basedir}/src/main/resources/dependencies/tools.jar</systemPath>-->
-        <systemPath>${env.JAVA_HOME}\lib\tools.jar</systemPath>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.sun</groupId>-->
+        <!--<artifactId>tools</artifactId>-->
+        <!--<version>RELEASE</version>-->
+        <!--<scope>system</scope>-->
+            <!--&lt;!&ndash;<systemPath>${basedir}/src/main/resources/dependencies/tools.jar</systemPath>&ndash;&gt;-->
+        <!--<systemPath>${env.JAVA_HOME}\lib\tools.jar</systemPath>-->
+        <!--</dependency>-->
         <!--<dependency>-->
             <!--<groupId>org.apache.hadoop</groupId>-->
             <!--<artifactId>hadoop-common</artifactId>-->
@@ -39,11 +39,18 @@
             <!--<artifactId>chronicle-map</artifactId>-->
             <!--<version>3.16.0</version>-->
         <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.github.github</groupId>-->
+            <!--<artifactId>github-maven-core</artifactId>-->
+            <!--<version>RELEASE</version>-->
+        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.sun/tools -->
         <dependency>
-            <groupId>com.github.github</groupId>
-            <artifactId>github-maven-core</artifactId>
-            <version>RELEASE</version>
+            <groupId>com.github.olivergondza</groupId>
+            <artifactId>maven-jdk-tools-wrapper</artifactId>
+            <version>0.1</version>
         </dependency>
+
     </dependencies>
 
     <repositories>
