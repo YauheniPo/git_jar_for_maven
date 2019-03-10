@@ -8,7 +8,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <!--<java.version>1.8</java.version>-->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <github.global.server>github</github.global.server>
@@ -18,10 +18,10 @@
         <dependency>
             <groupId>com.sun</groupId>
             <artifactId>tools</artifactId>
-            <version>RELEASE</version>
+            <version>1.7.0_07</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/resources/dependencies/tools.jar</systemPath>
-            <!--<systemPath>${env.JAVA_HOME}\lib\tools.jar</systemPath>-->
+            <!--<systemPath>${basedir}/src/main/resources/dependencies/tools.jar</systemPath>-->
+            <systemPath>${env.JAVA_HOME}\lib\tools.jar</systemPath>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>org.apache.hadoop</groupId>-->
