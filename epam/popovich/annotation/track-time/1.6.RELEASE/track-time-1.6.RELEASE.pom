@@ -117,31 +117,32 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <verbose>true</verbose>
                     <compilerArgument>-proc:none</compilerArgument>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-    <!--<profiles>-->
-        <!--<profile>-->
-            <!--<id>tools.jar</id>-->
-            <!--<build>-->
-                <!--<plugins>-->
-                    <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-antrun-plugin</artifactId>-->
-                        <!--<dependencies>-->
-                            <!--<dependency>-->
-                                <!--<groupId>com.sun</groupId>-->
-                                <!--<artifactId>tools</artifactId>-->
-                                <!--<version>RELEASE</version>-->
-                                <!--<scope>system</scope>-->
-                                <!--<systemPath>${java.home}/../lib/tools.jar</systemPath>-->
-                            <!--</dependency>-->
-                        <!--</dependencies>-->
-                    <!--</plugin>-->
-                <!--</plugins>-->
-            <!--</build>-->
-        <!--</profile>-->
-    <!--</profiles>-->
+    <profiles>
+        <profile>
+            <id>tools.jar</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.sun</groupId>
+                                <artifactId>tools</artifactId>
+                                <version>RELEASE</version>
+                                <scope>system</scope>
+                                <systemPath>${java.home}/../lib/tools.jar</systemPath>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
