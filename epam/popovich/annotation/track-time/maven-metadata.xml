@@ -3,10 +3,10 @@
   <groupId>epam.popovich.annotation</groupId>
   <artifactId>track-time</artifactId>
   <versioning>
-    <release>1.6.RELEASE</release>
+    <release>1.2.RELEASE</release>
     <versions>
-      <version>1.6.RELEASE</version>
+      <version>1.2.RELEASE</version>
     </versions>
-    <lastUpdated>20190310125113</lastUpdated>
+    <lastUpdated>20190310125431</lastUpdated>
   </versioning>
 </metadata>
