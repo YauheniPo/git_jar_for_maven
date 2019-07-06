@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>epam.popovich.annotation</groupId>
+    <artifactId>track-time</artifactId>
+    <version>1.4.RELEASE</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <github.global.server>github</github.global.server>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.6.0</version>
+            <scope>system</scope>
+            <systemPath>${env.JAVA_HOME}\lib\tools.jar</systemPath>
+            <!--<systemPath>${basedir}/src/main/resources/dependencies/tools.jar</systemPath>-->
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.hadoop</groupId>-->
+            <!--<artifactId>hadoop-common</artifactId>-->
+            <!--<version>2.7.2</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>jdk.tools</groupId>-->
+                    <!--<artifactId>jdk.tools</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>net.openhft</groupId>-->
+            <!--<artifactId>chronicle-map</artifactId>-->
+            <!--<version>3.16.0</version>-->
+        <!--</dependency>-->
+    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>popovich.repo</id>
+            <name>repo-maven-popovich</name>
+            <url>file://${project.build.directory}/master</url>
+        </repository>
+    </distributionManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                    <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                    <outputDirectory>${project.build.directory}/master</outputDirectory> <!-- matches distribution management repository url above -->
+                    <branch>refs/heads/master</branch>                       <!-- remote branch name -->
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <repositoryName>git_jar_for_maven</repositoryName>      <!-- github repo name -->
+                    <repositoryOwner>YauheniPo</repositoryOwner>    <!-- github username  -->
+                    <merge>true</merge>
+                </configuration>
+                <executions>
+                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--</plugins>-->
+    <!--</build>-->
+    <!--<build>-->
+        <!--<plugins>-->
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/master</altDeploymentRepository>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>com.github.github</groupId>-->
+                <!--<artifactId>site-maven-plugin</artifactId>-->
+                <!--<version>0.12</version>-->
+                <!--<configuration>-->
+                    <!--<message>Maven artifacts for ${project.version}</message>-->
+                    <!--<server>github</server>-->
+                    <!--<noJekyll>true</noJekyll>-->
+                    <!--<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>-->
+                    <!--<branch>refs/heads/mvn-repo</branch>-->
+                    <!--<includes><include>**/*</include></includes>-->
+                    <!--<repositoryName>git_jar_for_maven</repositoryName>-->
+                    <!--<repositoryOwner>YauheniPo</repositoryOwner>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>site</goal>-->
+                        <!--</goals>-->
+                        <!--<phase>deploy</phase>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <fork>true</fork>
+                    <executable>${java.home}/../bin/javac</executable>
+                    <compilerArgument>-proc:none</compilerArgument>
+                </configuration>
+                <!--<configuration>-->
+                <!--<source>1.8</source>-->
+                <!--<target>1.8</target>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                <!--<execution>-->
+                <!--<id>default-compile</id>-->
+                <!--<configuration>-->
+                <!--<compilerArgument>-proc:none</compilerArgument>-->
+                <!--<includes>-->
+                <!--<include>LogProcessor.java</include>-->
+                <!--</includes>-->
+                <!--</configuration>-->
+                <!--</execution>-->
+                <!--<execution>-->
+                <!--<id>compile-project</id>-->
+                <!--<phase>compile</phase>-->
+                <!--<goals>-->
+                <!--<goal>compile</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
+                <!--</executions>-->
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
